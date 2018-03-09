@@ -1,0 +1,37 @@
+Caba Alexandru 312CB
+Punctaj checker12 - 20/20 si 30/30
+Punctaj checker34 - 10/40
+
+rgbHistogram.m
+	Am citit imaginea cu imread, dupa care am initialzat un vector de o linie si 3*count coloane. In for(1->count), pentru fiecare i calculez cate elemente se afla in intervalul corespunzator cu ajutorul functiei sum.
+
+hsvHistogram.m
+	Am citit imaginea cu imread, dupa care am initializat variabile, carora le-am facut cast la tipul double.
+	H,S,V - matricile ce vor contine la final valorile din transformarea rgb->hsv
+	Cmax Cmin Delta - matrici folosite in algrotimul de transformare
+	R,G,B - matricile ce contineau valorile Red,Green,Blue din imagine si pe care le-am folosit in transformare
+	Am construit matrici cu 0/1 (pentru a nu calcula element cu element valoarea din H) si le-am inmultit cu rezultatul din formula pentru a aduna doar pe pozitiile respective valorile.
+	Dupa construire matrici HSV am construit vectorul asemanator ca la task-ul 1.
+
+preprocess.m
+	Am folosit getImgNames pentru a lua numele imaginilor din director.
+	In fucnctie de tip(RGB sau HSV) am pus in B directorul si numele pozei dupa care am calculat histograma corespunzatoare si am adaugat-o in X.
+	Am verificat daca folderul este cats sau not_cats si am construit vectorul t in functie de rezultat.
+
+learn.m
+	Am folosit algoritmul Gram-Schmidt de descompunere in QR pentru a calcula w. A = X'*X => Aw = X't; A=QR => QRw=X't ; Q'*Q=I => Rw = Q'X't dupa care am rezolvat un sistem superior triunghiular.
+
+evaluate.m
+	Citesc numele imaginilor cu getImgNames si verific in ce director ma aflu(cats/not_cats) si iau o variabila cu 1 pentru cats si 0 pentru not_cats.
+	In functie de tip(RGB/HSV) calculez histograma, ii adaug un 1 la final si o inmultesc cu w. Fac comparatie y>=0 sau y<0 si vad daca poza a fost identificata corect pentru cats/not_cats.
+
+Gram_Schmidt.m
+	Algoritm de la laborator pentru dezvoltare QR
+
+SST.m
+	Algoritm de rezolvare sistem superior triunghiular facut la laborator.
+
+
+
+
+
